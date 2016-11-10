@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Test</title>
+    <style>
+        #todo-list {
+            border: red 1px solid;
+        }
+        .buttons {
+            border-bottom: 1.5px solid #ccc;
+        }
+        .buttons div {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .panel {
+            display: none;
+        }
+        .panel.active {
+            border: 1px #0050ef dashed;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons">
+        <div>
+            <button data-cmd="select" data-selector="div">选择所有 div 标签</button>
+            <button data-cmd="select" data-selector="#container">选择 Id 是 container 的元素</button>
+            <button data-cmd="select" data-selector="div:nth-child(5)">选择 Id 是 container 的元素</button>
+            <button data-cmd="select" data-selector=":button">jQuery 拓展，选择所有 button 元素</button>
+        </div>
+        <div>
+            <button data-cmd="pref-select" data-selector="#todo-list .new-todo-container .new-todo" data-pref="0">选择并操作有 new-todo 类的元素</button>
+            <button data-cmd="pref-select" data-selector="#todo-list .new-todo-container .new-todo" data-pref="1">选择并操作有 new-todo 类的元素（号称有性能优化）</button>
+            <button data-cmd="select" data-selector="#todo-list .new-todo-container #deep-dom-with-id">通过选择藏得很深的 p 标签</button>
+            <button data-cmd="select" data-selector="#deep-dom-with-id">直接选择藏得很深的 p 标签</button>
+        </div>
+        <div>
+            <button data-cmd="append" data-target="body" data-new-item="<input class='new-todo' placeholder='动态追加的 input.new-todo'>">在 body 上追加一个 input.new-todo</button>
+            <button data-cmd="append" data-target="#todo-list" data-new-item="<p>我是 append 的 p</p>">#todo-list append p</button>
+            <button data-cmd="prepend" data-target="#todo-list" data-new-item="<p>我是 prepend 的 p</p>">#todo-list prepend p</button>
+            <button data-cmd="after" data-target="#todo-list" data-new-item="<p>我是 after 的 p</p>">#todo-list after p</button>
+            <button data-cmd="before" data-target="#todo-list" data-new-item="<p>我是 before 的 p</p>">#todo-list before p</button>
+        </div>
+        <div>
+            <button data-cmd="content" data-selector="#todo-list" data-method="html">获得 #todo-list 的内容(.html)</button>
+            <button data-cmd="content" data-selector="#todo-list" data-method="text">获得 #todo-list 的内容(.text)</button>
+            <button data-cmd="content" data-selector="#todo-list" data-method="val">获得 #todo-list 的内容(.val)</button>
+            <button data-cmd="content" data-selector="#todo-list .new-todo-container .new-todo" data-content-method="val">获得.new-todo的内容(.val)</button>
+        </div>
+        <div>
+            <button data-cmd="prop" data-selector="#remember-me" data-method="attr">获取 checkbox 的选中状态(.attr)</button>
+            <button data-cmd="prop" data-selector="#remember-me" data-method="prop">获取 checkbox 的选中状态(.prop)</button>
+        </div>
+        <div>
+            <button data-cmd="class" data-selector=".panel" data-method="removeClass">移除 .panel 的 active 类</button>
+            <button data-cmd="class" data-selector=".panel" data-method="addClass">向 .panel 添加 active 类</button>
+            <button data-cmd="class" data-selector=".panel" data-method="hasClass">检查 .panel 是否有 active 类</button>
+        </div>
+        <div>
+            <button data-cmd="ajax" data-url="/todo-list.json">执行一次 ajax 查询</button>
+        </div>
+    </div>
+
+    <div>This is the 1st div.</div>
+    <div>This is the 2nd div.</div>
+    <div>This is the 3rd div.</div>
+    <div id="container">This is the 4th div. With id attribute 'container'.</div>
+    <div>This is the 5th div.</div>
+    <div>This is the 6th div.</div>
+    <div>This is the 7th div.</div>
+    <div>This is the 8th div.</div>
+    <div>This is the 9th div.</div>
+    <div>This is the 10th div.</div>
+
+    <div id="todo-list">
+        我是#todo-list
+        <ul class="todo-list">
+            <li class="todo-item">Demo Todo 1.</li>
+            <li class="todo-item">Demo Todo 2.</li>
+            <li class="todo-item">Demo Todo 3.</li>
+            <li class="todo-item">Demo Todo 4.</li>
+            <li class="todo-item">Demo Todo 5.</li>
+            <li class="todo-item">Demo Todo 6.</li>
+            <li class="todo-item">Demo Todo 7.</li>
+            <li class="todo-item">Demo Todo 8.</li>
+            <li class="todo-item">Demo Todo 9.</li>
+            <li class="todo-item">Demo Todo 10.</li>
+        </ul>
+        <div class="new-todo-container">
+            <input class="new-todo" type="text">
+            <input type="checkbox" id="remember-me" checked>
+            <label for="remember-me">我是checkbox</label>
+            <p id="deep-dom-with-id">这是一个藏得很深的p标签</p>
+        </div>
+    </div>
+
+    <div class="panel active">当我有active类时，我会显示并且有边框</div>
+
+    <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $('.new-todo').on('click', function() {
+                alert('别摸我' + $(this).val());
+            });
+
+            $('.buttons').on('click', '[data-cmd]', function(e) {
+                var $this = $(e.currentTarget);
+                var cmd = $this.attr('data-cmd');
+                switch (cmd) {
+                    case 'select':
+                        console.time('selector times');
+                        var selector = $this.attr('data-selector');
+                        console.log($(selector));
+                        console.timeEnd('selector times');
+                        break;
+                    case 'pref-select':
+                        var pref = $this.attr('data-pref');
+                        var selector = $this.attr('data-selector');
+                        switch (pref) {
+                            case '0':
+                                console.time('pref-select normal');
+                                var val = $(selector).val();
+                                console.log('value = ' + val);
+                                $(selector).val('');
+                                console.timeEnd('pref-select normal');
+                                break;
+                            case '1':
+                                console.time('pref-select optimization');
+                                var $selector = $(selector);
+                                var val = $selector.val();
+                                console.log('value = ' + val);
+                                $selector.val('');
+                                console.timeEnd('pref-select optimization');
+                                break;
+                        }
+                        break;
+                    case 'content':
+                        var selector = $this.attr('data-selector');
+                        var method = $this.attr('data-method');
+                        console.log($(selector)[method]());
+                        break;
+                    case 'prop':
+                        var selector = $this.attr('data-selector');
+                        var method = $this.attr('data-method');
+                        console.log(method + ': checked = ' + $(selector)[method]('checked'))
+                        break;
+                    case 'class':
+                        var selector = $this.attr('data-selector');
+                        var method = $this.attr('data-method');
+                        console.log($(selector)[method]('active'));
+                        break;
+                    case 'append':
+                    case 'prepend':
+                    case 'after':
+                    case 'before':
+                        var $new = $this.attr('data-new-item');
+                        var $target = $this.attr('data-target');
+                        $($target)[cmd]($new);
+                        break;
+                    case 'ajax':
+                        $.ajax({
+                            url: '/todo-list.json',
+                            method: 'POST',
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                title: '对应培训的页面'
+                            })
+                        })
+                        .then(
+                            function(data) {
+                                // success
+                                console.log(data);
+                            },
+                            function(error) {
+                                // error
+                                console.error(error);
+                            }
+                        );
+                        break;
+                }
+            });
+    });
+    </script>
+</body>
+</html>
