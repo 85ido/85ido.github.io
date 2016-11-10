@@ -2,37 +2,37 @@
 
 ## 目录
 
-[背景](#background)
+- [背景](#background)
 
-[选择器和常用操作](#selector-tools)
+- [选择器和常用操作](#selector-tools)
 
-- [选择器](#selector)
+    - [选择器](#selector)
 
-    - [组合选择结果](#combine-result)
+        - [组合选择结果](#combine-result)
 
-    - [性能优化](#performance)
+        - [性能优化](#performance)
 
-        - [使用简单选择器](#simple-selector)
+            - [使用简单选择器](#simple-selector)
 
-        - [缓存选择结果](#cache-selector-result)
+            - [缓存选择结果](#cache-selector-result)
 
-- [常用操作](#tools)
+    - [常用操作](#tools)
 
-    - [添加和移除元素](#edit-element)
+        - [添加和移除元素](#edit-element)
 
-    - [修改元素内部](#element-content)
+        - [修改元素内部](#element-content)
 
-    - [获取元素属性](#element-attr)
+        - [获取元素属性](#element-attr)
 
-    - [类和样式](#element-class)
+        - [类和样式](#element-class)
 
-[事件绑定和处理](#events)
+- [事件绑定和处理](#events)
 
-- [事件代理](#events-delegate)
+    - [事件代理](#events-delegate)
 
-[发送和处理请求](#ajax)
+- [发送和处理请求](#ajax)
 
-[Question](#question)
+- [Question](#question)
 
 ---
 
