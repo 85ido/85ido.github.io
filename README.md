@@ -48,12 +48,12 @@
 
 1. 在本地的 Fork 库添加一个远端
 
-```bash
-$ git remote add upstream https://github.com/85ido/85ido.github.io.git
-```
+    ```bash
+    $ git remote add upstream https://github.com/85ido/85ido.github.io.git
+    ```
 
 1. 以后每次与主库同步时，只需要执行
 
-```bash
-$ git pull 85ido master
-```
+    ```bash
+    $ git pull 85ido master
+    ```
