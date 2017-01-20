@@ -207,9 +207,13 @@ $ npm install -g gulp babel-cli http-server
 
     VSCode 可以安装一些插件，配合项目中的配置文件可以使文件属性与团队保持一致（如：文件末尾保持空行，使用哪个平台的行结束符等）。
 
-    在左侧选择扩展，搜索 `editorconfig`，安装 `EditorConfig for VS Code`。
+    - 在左侧选择扩展，搜索 `editorconfig`，安装 `EditorConfig for VS Code`。
 
-    ![VSCode 安装选项2](images/setup/vscode-2.jpg)
+        ![VSCode 安装选项2](images/setup/vscode-2.jpg)
+    
+    - 搜索 `eslint`，安装 `ESLint`
+    
+        ![VSCode Eslint插件](images/setup/vscode-3.jpg)
 
 1. 配色方案
 
