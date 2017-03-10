@@ -1,8 +1,6 @@
-# 环境安装文档
+# 环境安装文档(for Ubuntu)
 
-这个文档的目标是：各位小伙伴通过这个文档，可以在一台全新的电脑上搭建平常开发使用的环境，主要包含 Node.js, git 和 编辑器部分。
-
-**下文提到的所有 bash，需要安装完 git 后，右键选择 Git Bash Here 调出。**
+这个文档的目标是：各位小伙伴通过这个文档，可以在一台全新的 Ubuntu 电脑上搭建平常开发使用的环境，主要包含 Node.js, git 和 编辑器部分。
 
 ## [git](https://zh.wikipedia.org/wiki/Git) 和 git GUI
 
@@ -18,25 +16,12 @@ git 是一个版本控制工具，我们使用 [coding.net](https://coding.net) 
     $ git --version
     ```
 
-1. 下载
-
-    [下载 git](https://git-scm.com/download/win) 会自动检测你的操作系统和位数，提供下载的安装包。
-
-1. 安装
-
-    1. 重要：保持 **Git Bash Here** 选中。
-
-        ![Git 安装选项1](images/setup/git-1.jpg)
-
-    1. 其他步骤保持默认选项即可
-
-1. 设置信息
-
-    可以设置提交所有仓库时使用的用户名和邮箱
+1. 安装（[参考](http://stackoverflow.com/a/19109661)）
 
     ```bash
-    $ git config --global user.name "Your Name"
-    $ git config --global user.email yourName@85ido.com
+    $ sudo add-apt-repository ppa:git-core/ppa
+    $ sudo apt-get update
+    $ sudo apt-get install git
     ```
 
 1. 完成
@@ -47,19 +32,43 @@ git 是一个版本控制工具，我们使用 [coding.net](https://coding.net) 
     $ git --version
     ```
 
+1. 设置信息
+
+    可以设置提交所有仓库时使用的用户名和邮箱
+
+    ```bash
+    $ git config --global user.name "Your Name"
+    $ git config --global user.email yourName@85ido.com
+    ```
+
 ### git GUI
 
-git 提供了命令行操作的方式，对于复杂的操作，还是有一个趁手的可视化工具为上。目前可用的 git GUI 工具有 [Git Extensions](https://gitextensions.github.io/) 和 [SourceTree](https://www.sourcetreeapp.com/)。其中 SourceTree 免费试用 30 天，试用结束后可以通过注册账号继续使用，SourceTree 也提供了 Mac 客户端。本文主要介绍 Git Extensions 的安装和配置，SourceTree 同理。
+git 提供了命令行操作的方式，对于复杂的操作，还是有一个趁手的可视化工具为上。目前可用的 git GUI 工具有 [Git Extensions](https://gitextensions.github.io/)。本文主要介绍 Git Extensions 的安装和配置（[参考](https://github.com/gitextensions/gitextensions/wiki/Git-Extensions-on-Linux)）。
+
+1. 安装 kdiff3
+
+    ```bash
+    $ sudo sudo apt install kdiff3
+    $ kdiff3 --version
+    ```
+
+1. 安装 Mono 4.6+
+
+    ```bash
+    $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+    $ echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+    $ sudo apt update
+    $ sudo apt install mono-complete
+    $ mono --version
+    ```
 
 1. 下载
 
-    [在这里下载](https://github.com/gitextensions/gitextensions/releases/tag/v2.49)最新的 Git Extensions。
+    [在这里下载](https://github.com/gitextensions/gitextensions/releases/latest)最新的 **Git Extensions Mono**。
 
-1. 安装
+1. 解压缩
 
-    在这一步时，可以一并安装 KDiff 3.
-
-    ![Git Extensions 安装选项1](images/setup/git_extensions-1.jpg)
+    将下载好的 GitExtensions-*version*-Mono.zip 解压，双击 `GitExtensions.exe` 即可运行。
 
 1. 设置
 
@@ -83,15 +92,12 @@ Node.js 的 release 规则是按月份 release，所以我们只需要用相对�
     $ node -v
     ```
 
-1. 下载
-
-    可以在[这个地址](https://nodejs.org/dist/latest-v4.x/)下载 Node.js 4.x 版本，一般使用最后一个版本，写文档的时候最后的版本应该是 v4.6.2。对于 Windows 系统来说下载 .msi 文件安装即可。
-
 1. 安装
 
-    执行安装包安装即可，建议安装路径中不要包含中文，配置均可默认。
-
-    *如果安装中报出 2502 或 2503 错误，需要将安装包移动到 `C:\Windows\Installer` 然后使用管理员模式的 powershell 或 cmd 执行文件。*
+    ```bash
+    $ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+    $ sudo apt-get install nodejs
+    ```
 
 1. 结束
 
@@ -102,47 +108,15 @@ Node.js 的 release 规则是按月份 release，所以我们只需要用相对�
 
 ## npm
 
-npm 是 Node.js 的包管理工具，安装 Node.js 时会被一并安装（没关闭 npm package manager 的情况）。
+npm 是 Node.js 的包管理工具，安装 Node.js 时会被一并安装。
 
 ### 升级 npm
 
 但自带安装的 npm 版本过低(2.15)，需要进行升级。
 
-#### 在除 Windows 以外的系统上升级
-
-[Moved to setup Ubuntu](setup-ubuntu.md)
-
-#### 在 Windows 上升级
-
-在 Windows 上升级需要借助一个模块：[npm-windows-upgrade](https://github.com/felixrieseberg/npm-windows-upgrade)，这部分只是把该模块的食用方法进行翻译。
-
-注意：在 Windows 上升级 npm 需要使用 **管理员模式的 powershell** 执行以下的命令。
-
-1. 设置
-
-    ```
-    Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force
-    ```
-
-1. 安装升级需要的模块
-
-    ```
-    npm install --global --production npm-windows-upgrade
-    ```
-
-1. 使用模块，将 npm 升级到 3.10.9
-
-    ```
-    npm-windows-upgrade --npm-version 3.10.9
-    ```
-
-1. 完成
-
-    查看 npm 版本，与升级目标一致就成功啦。
-
-    ```
-    npm -v
-    ```
+```bash
+$ npm install -g npm@latest
+```
 
 ### 配置使用镜像
 
@@ -189,15 +163,19 @@ $ npm install -g gulp babel-cli http-server
 
     [在这里下载](https://code.visualstudio.com/#alt-downloads) VSCode
 
+    选择 .deb(Debian, Ubuntu) 版本
+
 1. 安装
 
-    保持“其他”中的选项选中。
-
-    ![VSCode 安装选项1](images/setup/vscode-1.jpg)
+    ```bash
+    $ cd /path/to/you/deb/file
+    $ sudo apt-get install -f
+    $ sudo dpkg -i deb-filename
+    ```
 
 1. 完成
 
-    在 运行(Win+R) 中输入 Code 或点击桌面上的图标打开 VS Code。
+    在搜索中输入 Code。
 
 ### 配置
 
