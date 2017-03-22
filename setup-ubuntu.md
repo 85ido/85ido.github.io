@@ -2,6 +2,8 @@
 
 这个文档的目标是：各位小伙伴通过这个文档，可以在一台全新的 Ubuntu 电脑上搭建平常开发使用的环境，主要包含 Node.js, git 和 编辑器部分。
 
+**这是针对 Ubuntu 系统的安装文档，Windows 文档[点击这里](setup.md)。**
+
 ## [git](https://zh.wikipedia.org/wiki/Git) 和 git GUI
 
 git 是一个版本控制工具，我们使用 [coding.net](https://coding.net) 存放 git 的远程仓库。

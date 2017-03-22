@@ -2,6 +2,8 @@
 
 这个文档的目标是：各位小伙伴通过这个文档，可以在一台全新的电脑上搭建平常开发使用的环境，主要包含 Node.js, git 和 编辑器部分。
 
+**这是针对 Windows 系统的安装文档，Ubuntu 文档[点击这里](setup-ubuntu.md)。**
+
 **下文提到的所有 bash，需要安装完 git 后，右键选择 Git Bash Here 调出。**
 
 ## [git](https://zh.wikipedia.org/wiki/Git) 和 git GUI
