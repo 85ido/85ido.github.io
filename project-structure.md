@@ -7,10 +7,11 @@
 以 public/ 为主，下面的目录都是相对于 public/ 的目录
 
 ```
-css 存放css，但是不会生成包含MD5的文件
+css 存放css
 fonts 存放字体，原样生成
 img 存放图片，原样生成
 js 存放编译后的js文件
+    bundles 存放基础库（即：每个页面都依赖的基础库）(①)
     deps 存放依赖库
 source 存放js源码，可以使用ES6语法，开发阶段会被编译到 js/ 中，发布时会被编译成包含MD5的文件
     components angular component
@@ -19,17 +20,18 @@ source 存放js源码，可以使用ES6语法，开发阶段会被编译到 js/ 
     modals 项目中Modal的Controller
     services angular services，命名建议使用camelCase
     validators custom validator，自定义验证器，一般在这里定义的是项目中通用的验证器
-    module-name 根据模块可以拆分目录，目录中可以再存在 validators 目录，其他的不推荐
+    module-name 根据模块可以拆分目录，目录中可以继续按照概念划分
     main.js angular 主配置文件，如果添加了新的第三方库，则需要修改这个文件
     templates.js views/directives/ 中的模板文件生成的 $templateCache 代码，策略为 pager-tpl.jade -> pager.tpl，不要手动修改，如果需要修改，请去修改 views/directives/ 中对应的模板文件，发布时会直接按照该文件原样生成
 ```
 
+*①：对于一个库，大部分页面都要使用、不影响现有代码的，放在 bundles 下，从 `shared/*.html` 中引用；仅有个别页使用及可能会带来代码调整的，放在 deps 下，且从使用到的页面引用。**对于 angular 第三方组件，必须放在 bundles 下，因为要在 `main.js` 中添加该组件的依赖。***
 ### 前端Server
 
 以下目录都是相对于项目根目录的
 
 ```
-datas 请求后端接口方法的费鞥装
+datas 请求后端接口方法的封装
 helpers jade 中使用的函数，建议一组相关联的函数在一个模块（文件）中
 logs 按天生成的日志文件
 middlewares express 中间件，在（某些）请求执行前后会被执行的 function
