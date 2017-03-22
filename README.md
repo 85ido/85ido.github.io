@@ -1,59 +1,41 @@
-# 85ido.github.io
+# 85ido 技术资料
 
-山东八五创新信息技术有限公司的前端交互部门的一些总结和资料。
+## 目录
 
-## 贡献文档
+### 技术和工具使用
 
-在开始贡献文档之前：
+- [Passport基本使用及原理](passport-basic.md)
 
-1. Fork 这个库
+- [Fiddler 使用](fiddler.md)
 
-    ![Fork repository](images/contribute/fork.jpg)
+- [前后端分离的项目结构](project-structure.md)
 
-1. Fork 之后，会在自己的仓库列表中出现一个新仓库，clone 这个新仓库到本地。
+### 代码规范
 
-    ![Forked](images/contribute/forked.jpg)
+- [代码规范](style-guide/README.md)
 
-贡献文档：
+### ES6
 
-1. 将文档提交到新仓库
+- [解构](es6-features/解构.md)
 
-    ![Submitted](images/contribute/submitted.jpg)
+- [Array](es6-features/Array的一些操作.md)
 
-1. 确认文档完成并检查后，在 **Fork 仓库**中点击 Pull requests > New pull request
+- [Arrow Function](es6-features/arrow-function.md)
 
-    ![New pull request](images/contribute/new-pull-request.jpg)
+- [const, let](es6-features/let_const.md)
 
-1. 会跳转到原本的库并比较改动，并给出是否可以自动合并
+- [Map 和 Set](es6-features/Map和Set数据结构.md)
 
-    ![Pull request](images/contribute/pull-request-overview.jpg)
+- [Promise](es6-features/Promise对象.md)
 
-1. 确认无误后点击 **Create pull request**，输入 Pull request 的标题和描述。
+- [JavaScript 异步编程](es6-features/Promise-plus.md)
 
-    *建议：*Pull request 的描述与提交日志类似。
+### 环境
 
-    ![Create pull request](images/contribute/create-pull-request.jpg)
+- [环境安装文档(Windows)](setup.md)
 
-1. 点击 **Create pull request**，等待通过，就可以在主仓库中看到你的提交了。
+- [环境安装文档(Ubuntu)](setup-ubuntu.md)
 
-    ![Merge success](images/contribute/merge-success.jpg)
+## 贡献
 
-### 常见问题：我如何将主库上其他的提交合并到我的 Fork 库？
-
-参考：
-
-- [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
-
-- [Syncing a fork](https://help.github.com/articles/syncing-a-fork/)
-
-1. 在本地的 Fork 库添加一个远端
-
-    ```bash
-    $ git remote add upstream https://github.com/85ido/85ido.github.io.git
-    ```
-
-1. 以后每次与主库同步时，只需要执行
-
-    ```bash
-    $ git pull 85ido master
-    ```
+如果你有好的文章分享，请参考 [贡献文档](contribute.md)。
