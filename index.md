@@ -24,7 +24,7 @@
 
 - [const, let](es6-features/let_const.md)
 
-- [Map 和 Set](es6-features/Map和Set 数据结构.md)
+- [Map 和 Set](es6-features/Map和Set数据结构.md)
 
 - [Promise](es6-features/Promise对象.md)
 
