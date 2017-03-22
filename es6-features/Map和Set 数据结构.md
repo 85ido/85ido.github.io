@@ -1,9 +1,9 @@
 
-#SetºÍMapÊý¾Ý½â¹¹
+#Setå’ŒMapæ•°æ®è§£æž„
 ##Set
-- »ù±¾ÓÃ·¨
-	ES6Ìá¹©£¬ÀàËÆÓÚÊý×é£¬µ«³ÉÔ±µÄÖµÊÇÎ¨Ò»µÄ,ÅÐ¶ÏÊÇ·ñÖØ¸´ÓÃ===
-	Set±¾ÉíÊÇÒ»¸ö¹¹Ôìº¯Êý£¬ÓÃÀ´Éú³ÉSetÊý¾Ý½á¹¹¡£
+- åŸºæœ¬ç”¨æ³•
+	ES6æä¾›ï¼Œç±»ä¼¼äºŽæ•°ç»„ï¼Œä½†æˆå‘˜çš„å€¼æ˜¯å”¯ä¸€çš„,åˆ¤æ–­æ˜¯å¦é‡å¤ç”¨===
+	Setæœ¬èº«æ˜¯ä¸€ä¸ªæž„é€ å‡½æ•°ï¼Œç”¨æ¥ç”ŸæˆSetæ•°æ®ç»“æž„ã€‚
 	```
 	var s = new Set();
 	[2, 3, 5, 4, 5, 2, 2].map(x => s.add(x));
@@ -12,20 +12,20 @@
 	}
 	// 2 3 5 4
 	```
-	Setº¯Êý¿ÉÒÔ½ÓÊÜÒ»¸öÊý×é£¨»òÀàËÆÊý×éµÄ¶ÔÏó£©×÷Îª²ÎÊý£¬ÓÃÀ´³õÊ¼»¯¡£
-	ÊµÏÖÊý×éÈ¥ÖØ
+	Setå‡½æ•°å¯ä»¥æŽ¥å—ä¸€ä¸ªæ•°ç»„ï¼ˆæˆ–ç±»ä¼¼æ•°ç»„çš„å¯¹è±¡ï¼‰ä½œä¸ºå‚æ•°ï¼Œç”¨æ¥åˆå§‹åŒ–ã€‚
+	å®žçŽ°æ•°ç»„åŽ»é‡
 	```
 	var arr =  [...new Set([2,2,2,3,4,5])];
 	var arr2 =Array.from(new Set([2,2,2,3,4,5]));
 	```
-	¶ÔÏó×ÜÊÇ²»ÏàµÈµÄ
+	å¯¹è±¡æ€»æ˜¯ä¸ç›¸ç­‰çš„
 	```
 	set.Add({});
 	set.Add({});
 	set.size = 2
 	```
-- SetµÄÊµÀýºÍ·½·¨ 
-	²Ù×÷·½·¨
+- Setçš„å®žä¾‹å’Œæ–¹æ³• 
+	æ“ä½œæ–¹æ³•
 	```
 	var set = new Set([1,2,3]);
 		add(value)	 //Set
@@ -33,7 +33,7 @@
 		has(value)	 //true
 		clear()  
 	```
-	±éÀú·½·¨
+	éåŽ†æ–¹æ³•
 	```
 	let set = new Set(['red', 'green', 'blue']);
 		keys()   //for(let x of set.keys())
@@ -41,26 +41,26 @@
 		entries()   //for(let x of set.values())
 		forEach()	//   set.forEach((value,key)=>console.log(value);)	
 	```  
-	±éÀúÓ¦ÓÃ...
+	éåŽ†åº”ç”¨...
 	```
 	let a = new Set([1, 2, 3]);
 	let b = new Set([4, 3, 2]);
-	// ²¢¼¯
+	// å¹¶é›†
 	let union = new Set([...a, ...b]);
 	// Set {1, 2, 3, 4}
-	// ½»¼¯
+	// äº¤é›†
 	let intersect = new Set([...a].filter(x => b.has(x)));
 	// set {2, 3}
-	// ²î¼¯
+	// å·®é›†
 	let difference = new Set([...a].filter(x => !b.has(x)));
 	// Set {1}
 	```
  ##Map
-- MapµÄ½á¹¹Ä¿µÄºÍÓÃ·¨	 
-	JavaScriptµÄ¶ÔÏó£¨Object£©£¬±¾ÖÊÉÏÊÇ¼üÖµ¶ÔµÄ¼¯ºÏ£¨Hash½á¹¹£©£¬µ«ÊÇ´«Í³ÉÏÖ»ÄÜÓÃ×Ö·û´®µ±×÷¼ü¡£Õâ¸øËüµÄÊ¹ÓÃ´øÀ´ÁËºÜ´óµÄÏÞÖÆ¡£
-	ÎªÁË½â¾öÕâ¸öÎÊÌâ£¬ES6Ìá¹©ÁËMapÊý¾Ý½á¹¹¡£ËüÀàËÆÓÚ¶ÔÏó£¬Ò²ÊÇ¼üÖµ¶ÔµÄ¼¯ºÏ£¬µ«ÊÇ¡°¼ü¡±µÄ·¶Î§²»ÏÞÓÚ×Ö·û´®£¬¸÷ÖÖÀàÐÍµÄÖµ£¨°üÀ¨¶ÔÏó£©¶¼¿ÉÒÔµ±×÷¼ü¡£Ò²¾ÍÊÇËµ£¬Object½á¹¹Ìá¹©ÁË¡°×Ö·û´®¡ªÖµ¡±µÄ¶ÔÓ¦£¬Map½á¹¹Ìá¹©ÁË¡°Öµ¡ªÖµ¡±µÄ¶ÔÓ¦£¬ÊÇÒ»ÖÖ¸üÍêÉÆµÄHash½á¹¹ÊµÏÖ¡£Èç¹ûÄãÐèÒª¡°¼üÖµ¶Ô¡±µÄÊý¾Ý½á¹¹£¬Map±ÈObject¸üºÏÊÊ¡£
+- Mapçš„ç»“æž„ç›®çš„å’Œç”¨æ³•	 
+	JavaScriptçš„å¯¹è±¡ï¼ˆObjectï¼‰ï¼Œæœ¬è´¨ä¸Šæ˜¯é”®å€¼å¯¹çš„é›†åˆï¼ˆHashç»“æž„ï¼‰ï¼Œä½†æ˜¯ä¼ ç»Ÿä¸Šåªèƒ½ç”¨å­—ç¬¦ä¸²å½“ä½œé”®ã€‚è¿™ç»™å®ƒçš„ä½¿ç”¨å¸¦æ¥äº†å¾ˆå¤§çš„é™åˆ¶ã€‚
+	ä¸ºäº†è§£å†³è¿™ä¸ªé—®é¢˜ï¼ŒES6æä¾›äº†Mapæ•°æ®ç»“æž„ã€‚å®ƒç±»ä¼¼äºŽå¯¹è±¡ï¼Œä¹Ÿæ˜¯é”®å€¼å¯¹çš„é›†åˆï¼Œä½†æ˜¯â€œé”®â€çš„èŒƒå›´ä¸é™äºŽå­—ç¬¦ä¸²ï¼Œå„ç§ç±»åž‹çš„å€¼ï¼ˆåŒ…æ‹¬å¯¹è±¡ï¼‰éƒ½å¯ä»¥å½“ä½œé”®ã€‚ä¹Ÿå°±æ˜¯è¯´ï¼ŒObjectç»“æž„æä¾›äº†â€œå­—ç¬¦ä¸²â€”å€¼â€çš„å¯¹åº”ï¼ŒMapç»“æž„æä¾›äº†â€œå€¼â€”å€¼â€çš„å¯¹åº”ï¼Œæ˜¯ä¸€ç§æ›´å®Œå–„çš„Hashç»“æž„å®žçŽ°ã€‚å¦‚æžœä½ éœ€è¦â€œé”®å€¼å¯¹â€çš„æ•°æ®ç»“æž„ï¼ŒMapæ¯”Objectæ›´åˆé€‚ã€‚
 	```
-	//¶ÔÏó
+	//å¯¹è±¡
 	var m = new Map();
 	var o = {p: 'Hello World'};
 	m.set(o, 'content')
@@ -69,37 +69,37 @@
 	m.delete(o) // true
 	m.has(o) // false
 
-	//Êý×é
+	//æ•°ç»„
 	var map = new Map([
-	  ['name', 'ÕÅÈý'],
+	  ['name', 'å¼ ä¸‰'],
 	  ['title', 'Author']
 	]);
 	map.size // 2
 	map.has('name') // true
-	map.get('name') // "ÕÅÈý"
+	map.get('name') // "å¼ ä¸‰"
 	map.has('title') // true
 	map.get('title') // "Author"
 	```
-	Èç¹û¶ÔÍ¬Ò»¸ö¼ü¶à´Î¸³Öµ£¬ºóÃæµÄÖµ½«¸²¸ÇÇ°ÃæµÄÖµ¡£
+	å¦‚æžœå¯¹åŒä¸€ä¸ªé”®å¤šæ¬¡èµ‹å€¼ï¼ŒåŽé¢çš„å€¼å°†è¦†ç›–å‰é¢çš„å€¼ã€‚
 	let map = new Map();
 	map
 	.set(1, 'aaa')
 	.set(1, 'bbb');
 	map.get(1) // "bbb"
-	Èç¹ûMapµÄ¼üÊÇÒ»¸ö¼òµ¥ÀàÐÍµÄÖµ£¨Êý×Ö¡¢×Ö·û´®¡¢²¼¶ûÖµ£©£¬ÔòÖ»ÒªÁ½¸öÖµÑÏ¸ñÏàµÈ£¬Map½«ÆäÊÓÎªÒ»¸ö¼ü£¬°üÀ¨0ºÍ-0¡£ÁíÍâ£¬ËäÈ»NaN²»ÑÏ¸ñÏàµÈÓÚ×ÔÉí£¬µ«Map½«ÆäÊÓÎªÍ¬Ò»¸ö¼ü¡£
+	å¦‚æžœMapçš„é”®æ˜¯ä¸€ä¸ªç®€å•ç±»åž‹çš„å€¼ï¼ˆæ•°å­—ã€å­—ç¬¦ä¸²ã€å¸ƒå°”å€¼ï¼‰ï¼Œåˆ™åªè¦ä¸¤ä¸ªå€¼ä¸¥æ ¼ç›¸ç­‰ï¼ŒMapå°†å…¶è§†ä¸ºä¸€ä¸ªé”®ï¼ŒåŒ…æ‹¬0å’Œ-0ã€‚å¦å¤–ï¼Œè™½ç„¶NaNä¸ä¸¥æ ¼ç›¸ç­‰äºŽè‡ªèº«ï¼Œä½†Mapå°†å…¶è§†ä¸ºåŒä¸€ä¸ªé”®ã€‚
 	let map = new Map();
 	map.set(NaN, 123);
 	map.get(NaN) // 123
 	map.set(-0, 123);
 	map.get(+0) // 123
-- ÊµÀýµÄÊôÐÔºÍ²Ù×÷·½·¨
-	ÊôÐÔ¡¢²Ù×÷·½·¨
+- å®žä¾‹çš„å±žæ€§å’Œæ“ä½œæ–¹æ³•
+	å±žæ€§ã€æ“ä½œæ–¹æ³•
 	```
 	map.size=2
-	set(key, value) //Èç¹ûÓÐ¶ÔÓ¦µÄkey,¸²¸Ç
-	get(key)  //Èç¹ûÃ»ÓÐ·µ»Øunderfind
+	set(key, value) //å¦‚æžœæœ‰å¯¹åº”çš„key,è¦†ç›–
+	get(key)  //å¦‚æžœæ²¡æœ‰è¿”å›žunderfind
 	has(key)  //true
 	clear()
 	```
-	±éÀú·½·¨ Í¬Set
+	éåŽ†æ–¹æ³• åŒSet
 	
