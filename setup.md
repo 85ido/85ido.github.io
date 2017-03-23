@@ -148,9 +148,17 @@ npm 是 Node.js 的包管理工具，安装 Node.js 时会被一并安装（没�
 
 ### 配置使用镜像
 
-npm 默认使用的镜像在国内会受到速度影响，可以使用 cnpm 镜像替换默认的镜像。
+npm 默认使用的源在国内会受到速度影响，可以使用 npm的淘宝镜像替换默认的镜像，或直接使用cnpm别名。
 
-1. 一次配置方案：只需要配置一次，配置完成后使用 `cnpm install` 代替 `npm install`。
+1. 修改npm镜像为淘宝镜像，只需要配置一次
+
+    在命令行（cmd或bash）中执行如下命令：
+
+    ```
+    npm config set registry https://registry.npm.taobao.org
+    ```
+
+1. bash别名方案：只需要配置一次，配置完成后使用 `cnpm install` 代替 `npm install`（只能在git bash中使用）。
 
     将如下内容拷贝到 ~/.bashrc 文件中
 
@@ -178,7 +186,6 @@ npm 默认使用的镜像在国内会受到速度影响，可以使用 cnpm 镜�
 ```bash
 $ npm install -g gulp babel-cli http-server
 ```
-
 ## 编辑器
 
 在开发中有一个趁手的编辑器（No IDE）可以保证你不犯特别低级的错误，还可以使你的代码风格与团队保持一致。
