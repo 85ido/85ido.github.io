@@ -50,21 +50,23 @@
 
 　　[3.8 模块](#38-%E6%A8%A1%E5%9D%97)
 
+　　[3.9 异步](#39-%E5%BC%82%E6%AD%A5)
+
 [4 jQuery](#4-jQuery)
 
 [5 AngularJS](#5-AngularJS)
 
 　　[5.1 文件](#51-%E6%96%87%E4%BB%B6)
 
-　　[5.2 Module](#52-Module)
+　　[5.2 Module](#52-module)
 
-　　[5.3 Inject](#53-Inject)
+　　[5.3 Inject](#53-inject)
 
-　　[5.4 Controller](#54-Controller)
+　　[5.4 Controller](#54-controller)
 
-　　[5.5 Directive/Component](#54-Directive%2FComponent)
+　　[5.5 Directive/Component](#55-directivecomponent)
 
-　　[5.6 Provider/Service/Factory](#55-Provider%2FService%2FFactory)
+　　[5.6 Provider/Service/Factory](#56-providerservicefactory)
 
 ## 1 0
 
@@ -898,7 +900,7 @@ const bar = 3;
 export { foo, bar }
 ```
 
-### 3.10 异步
+### 3.9 异步
 
 **[建议]** 使用 `Promise` 代替 `callback`。
 
