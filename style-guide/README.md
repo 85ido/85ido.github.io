@@ -1,3 +1,3 @@
 # 前端代码规范
 
-Coming soon.
+[JavaScript 代码规范](javascript.md)
