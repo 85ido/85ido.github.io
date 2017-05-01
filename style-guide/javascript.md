@@ -118,17 +118,19 @@ if (!options) {
 
 **[强制]** `if`, `else`, `for`, `while`, `function`, `switch`, `try`, `catch`, `finally`, `function` 关键字后必须有一个空格。
 
+```javascript
+// good
+if (!options) {
+    options = {};
+}
+
+// bad
+if(options) {
+    options = {};
+}
+```
+
 **[强制]** 用作代码块起始的 `{` 前必须有一个空格。
-
-**[强制]** 创建对象时，`:` 之后必须有一个空格，`:` 之前不允许有空格。
-
-**[强制]** 函数声明和调用时，函数名和 `(` 之间不允许有空格。
-
-**[强制]** `,` 和 `;` 之前不允许有空格；`,` 和 `;` 如果不位于行尾，之后必须有空格。
-
-**[强制]** `()` 和 `[]` 内紧贴括号的部分不允许有空格。
-
-**[强制]** 行尾不允许有多余的空格。
 
 ```javascript
 // good
@@ -137,10 +139,14 @@ if (!options) {
 }
 
 // bad
-if(options){
+if (options){
     options = {};
 }
+```
 
+**[强制]** 创建对象时，`:` 之后必须有一个空格，`:` 之前不允许有空格。
+
+```javascript
 // good
 var john = {
     name: 'John'
@@ -151,37 +157,53 @@ var mike = {
     name:'Mike',
     age : 5
 };
+```
 
+**[强制]** 函数声明和调用时，函数名和 `(` 之间不允许有空格。
+
+```javascript
 // good
 function foo() {
-    // statement
+
 }
 
 // bad
 function foo () {
-    // statement
-}
 
+}
+```
+
+**[强制]** `,` 和 `;` 之前不允许有空格；`,` 和 `;` 如果不位于行尾，之后必须有空格。
+
+```javascript
 // good
 for (var i = 0; i < arr.length; i++) {
-    // loop
-}
 
-// bad
-for (var i = 0;i < arr.length;i++) {
-    // loop
 }
-
-// good
 foo(10, 15);
 
 // bad
+for (var i = 0;i < arr.length;i++) {
+
+}
 foo(10,15);
 ```
 
+**[强制]** `()` 和 `[]` 内紧贴括号的部分不允许有空格。
+
+```javascript
+// good
+var arr = [1, 2, 3, 4, 5];
+
+// bad
+var arr = [ 1, 2, 3, 4, 5 ];
+```
+
+**[强制]** 行尾不允许有多余的空格。
+
 **[强制]** 单行声明对象时，`{}` 内紧贴括号的部分必须有空格。
 
-[解释] 如果对象的值比较简单，可以使用单行声明，建议都使用多行声明对象。
+解释： 如果对象的值比较简单，可以使用单行声明，建议都使用多行声明对象。
 
 ```javascript
 // good
@@ -219,20 +241,18 @@ var age = 5; var name = 'John';
 if (user.isLogin()
     && user.isEnable()
     && user.hasRole('manage.role')) {
-    // Code
+
 }
 
 // bad
 if (user.isLogin &&
     user.isEnable() &&
     user.hasRole('manage.role')) {
-    // Code
+
 }
 ```
 
 **[强制]** 函数声明（表达式）、函数调用、对象（数组）创建，`for` 等场景换行时，`,` 和 `;` 不允许在新行起始。
-
-**[强制]** `if`, `else`, `try`, `catch`, `finally` 代码块的 `}` 之后换行。
 
 ```javascript
 // good
@@ -247,6 +267,8 @@ render(
     , data1, data2, data3
 );
 ```
+
+**[强制]** `if`, `else`, `try`, `catch`, `finally` 代码块的 `}` 之后换行。
 
 **[强制]** *6* 解构多个变量时，超出每行长度限制时，每个解构的变量单独一行，对象解构保持格式。
 
@@ -270,17 +292,17 @@ const { config: { dataLoaded, theme } } = chartOptions;
 // good
 functionReturnsPromise()
     .then(data => {
-        // do something with data
+
     })
     .catch(error => {
-        // toastr for user, log error
+
     });
 
 // bad
 functionReturnsPromise().then(data => {
-    // do something with data
+
 }).catch(error => {
-    // toastr for user, log error
+
 })
 ```
 
@@ -324,14 +346,14 @@ if (cod)
 ```javascript
 // good
 function foo() {
-    // statement
+
 }
 
 export { foo }
 
 // bad
 function baz() {
-    // statement
+
 };
 export { baz };
 export default baz;
@@ -343,61 +365,103 @@ export default baz;
 
 **[强制]** `变量` 使用 `camelCase`。
 
+```javascript
+// good
+var age = 5;
+
+// bad
+var Age = 5;
+```
+
 **[强制]** `常量` 使用 `UPPER_CASE`（即全部字母大写，单词之间使用下划线）。
+
+```javascript
+// good
+var MAX_STUDENT_PER_CLASS = 10;
+
+// bad
+var Max_Student_Per_Class = 10;
+```
 
 **[建议]** `常量` 放置在一个对象中，常量对象使用 `PascalCase`，每个 key 使用 `PascalCase`。
 
-**[强制]** 函数，函数的参数使用 `camelCase`。
+```javascript
+// good
+var Constants = {
+    Env: 'production',
+    MaxProject: 5
+};
+
+// bad
+var constants = {
+    ENV: 'production',
+    MAX_PROJECT: 5
+};
+```
+
+**[强制]** 函数使用 `PascalCase`，函数的参数使用 `camelCase`。
+
+```javascript
+// good
+function doSomething(primary) {
+
+}
+
+// bad
+function DoSomething(Primary) {
+
+}
+```
 
 **[强制]** 类使用 `PascalCase`。
 
+```javascript
+// good
+function Person() {
+
+}
+
+// bad
+function person() {
+    // person is a constructor
+}
+```
+
 **[强制]** 类的方法、属性使用 `camelCase`。
 
+```javascript
+// good
+Person.prototype.sayHello = function() {
+
+};
+
+// bad
+person.prototype.SayHello = function() {
+
+};
+```
+
 **[强制]** 由多个单词组成的缩写词，在大小写上应该保持一致。
+
+```javascript
+// good
+function makeRequest(httpService) {
+    
+}
+
+// bad
+function makeRequest(hTTPService) {
+
+}
+```
 
 **[建议]** `boolean` 类型的变量，以 `has` 或 `is` 开头。
 
 ```javascript
 // good
-var age = 5;
-var MAX_STUDENT_PER_CLASS = 10;
-var Constants = {
-    Env: 'production',
-    MaxProject: 5
-};
-function doSomething(primary) {
-
-}
-function Person() {
-
-}
-Person.prototype.sayHello = function() {
-
-};
-function makeRequest(httpService) {
-    
-}
 var isLoading = true;
 
 // bad
-var Age = 5;
-var Max_Student_Per_Class = 10;
-var constants = {
-    ENV: 'production',
-    MAX_PROJECT: 5
-};
-function DoSomething(Primary) {
-
-}
-function person() {
-    // person is a constructor
-}
-person.prototype.SayHello = function() {
-
-};
-function makeRequest(hTTPService) {
-
-}
 var loading = false;
 ```
     
@@ -434,7 +498,7 @@ if (condition
 
 **[建议]** 在可复用代码中编写文档注释。
 
-解释：在 85ido 仓库中，使用基于 jsdoc, ngdoc 的文档格式，编写文档注释，可以直接生成 API 文档。
+解释： 使用基于 jsdoc, ngdoc 的文档格式，编写文档注释，可以直接生成 API 文档。
 
 ```javascript
 /**
@@ -449,38 +513,6 @@ if (condition
 function templateAutoRender(options) {
 
 }
-```
-
-### 2.7 逻辑块组织 *A*
-
-每个逻辑单元的代码需要按照一定顺序组织。
-
-**[强制]** 按照变量声明、初始化回调、事件监听、函数的顺序组织 Controller, Directive, Component。
-
-```javascript
-// good
-angular.module('testModule', [])
-    .controller('TestController', function($scope) {
-        $scope.queryParams = {};
-        $scope.userList = [];
-        $scope.isLoading = false;
-
-        this.$onInit = function() {
-            $scope.query();
-        };
-
-        $scope.$watch('queryParams', function(newVal, oldVal) {
-            // statement;
-        }, true);
-
-        $scope.$on('change.ktDict', function() {
-            // event handler.
-        });
-
-        $scope.query = function() {
-            // do query
-        };
-    });
 ```
 
 ## 3 语言特性
@@ -767,14 +799,14 @@ for (var i = 0, len = elements.length; i < len; i++) {
 
 **[强制]** *6* 箭头函数只有一个参数，并且不需要解构时，参数列表必须不添加括号。
 
-**[强制]** *6* 箭头函数函数体只有一个表达式，且作为返回值时，必须省略 `{}` 和 `return`。
+**[建议]** *6* 箭头函数函数体只有一个表达式，且作为返回值时，可以省略 `{}` 和 `return`。
 
 **[建议]** *6* 箭头函数函数体直接返回一个对象字面量时，可以省略 `return` 并使用 `()` 包裹。
 
 ```javascript
 // good
 const getServerUrl = env => {
-    // Code
+
 };
 
 const selectedItems = displayList.filter(x => x.selected);
@@ -795,7 +827,7 @@ const sayHello = (name) => {
 ```javascript
 // good
 function open(url, fileName = url) {
-    // Code
+
 }
 
 // bad
@@ -918,6 +950,6 @@ function readFileSafe(path) {
 
 **[强制]** 运行环境中没有 `Promise` 时，将 `Promise` 时实现 shim 到 `global` 中。
 
-## jQuery
+## 4 jQuery
 
-## AngularJS
+## 5 AngularJS
