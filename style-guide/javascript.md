@@ -50,6 +50,8 @@
 
 　　[3.8 模块](#38-%E6%A8%A1%E5%9D%97)
 
+　　[3.9 异步](#39-%E5%BC%82%E6%AD%A5)
+
 [4 jQuery](#4-jQuery)
 
 [5 AngularJS](#5-AngularJS)
@@ -898,7 +900,7 @@ const bar = 3;
 export { foo, bar }
 ```
 
-### 3.10 异步
+### 3.9 异步
 
 **[建议]** 使用 `Promise` 代替 `callback`。
 
