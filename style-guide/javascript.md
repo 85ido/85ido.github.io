@@ -54,6 +54,18 @@
 
 [5 AngularJS](#5-AngularJS)
 
+　　[5.1 文件](#51-%E6%96%87%E4%BB%B6)
+
+　　[5.2 Module](#52-Module)
+
+　　[5.3 Inject](#53-Inject)
+
+　　[5.4 Controller](#54-Controller)
+
+　　[5.5 Directive/Component](#54-Directive%2FComponent)
+
+　　[5.6 Provider/Service/Factory](#55-Provider%2FService%2FFactory)
+
 ## 1 0
 
 ### 1.1 规范等级
@@ -508,7 +520,7 @@ if (condition
 * @param {boolean} [options.domDiff=false] 是否开启 virtual dom，默认 false
 * @param {object} options.data 渲染模板使用的数据
 * 
-* @return Promise 渲染模板结束后会 resouilve，遇到错误时 reject
+* @return Promise 渲染模板结束后会 resolve，遇到错误时 reject
 */
 function templateAutoRender(options) {
 
@@ -953,3 +965,201 @@ function readFileSafe(path) {
 ## 4 jQuery
 
 ## 5 AngularJS
+
+**[强制]** 按照变量声明、初始化回调、事件监听、函数的顺序组织 `Controller`, `Directive`, `Component`。
+
+```javascript
+// good
+angular.module('myApp')
+    .controller('TestController', function($scope) {
+        $scope.queryParams = {};
+        $scope.userList = [];
+        $scope.isLoading = false;
+
+        this.$onInit = function() {
+            $scope.query();
+        };
+
+        $scope.$watch('queryParams', function(newVal, oldVal) {
+
+        }, true);
+
+        $scope.$on('change.ktDict', function() {
+
+        });
+
+        $scope.query = function() {
+
+        };
+    });
+```
+
+### 5.1 文件
+
+**[建议]** 每个文件中只包含一个概念或逻辑单元。
+
+“概念或逻辑单元”指的是：*Directive 及其 Controller*，*Service 和对应的 Provider*，*Filter*，*视图 Controller* 等。
+
+解释：单一文件中内容过多时，代码可读性会降低。按照单元进行分割，保证了组件的完整性。注意：视图 Controller 和视图中弹框的 Controller 可能不为同一逻辑单元，因为弹框可能会被多个视图复用。
+
+**[建议]** 公共常量在同一个文件中维护。组件使用的常量在组件文件中维护。
+
+**[建议]** 组件的声明和配置使用单独的文件。
+
+### 5.2 Module
+
+**[强制]** 不使用变量缓存 `angular.module()` 的执行结果，直接进行链式调用。
+
+```javascript
+// good
+angular.module('myApp', [])
+    .config(function($httpProvider) {
+
+    });
+
+// bad
+var myApp = angular.module('myApp', []);
+myApp.config(function($httpProvider) {
+
+});
+```
+
+**[建议]** 声明 Module 的依赖时，优先声明 angular 官方依赖，再按照使用频率倒序进行排列。
+
+### 5.3 Inject
+
+**[建议]** 使用字符串数组声明依赖项。
+
+解释：使用字符串数组指明依赖项，可以不依赖构造函数中参数的名称，方便的进行代码压缩和混淆。但要注意的是，需要高度关注**依赖项数组和函数参数的位置**。
+
+```javascript
+// good
+angular.module('myApp')
+    .controller('TodoListController', [
+        '$scope', 
+        'toastrService', 
+        'todoListService', 
+        function(scope, toastrService, todoListService) {
+
+        }
+    ]);
+
+// bad
+angular.module('myApp')
+    .controller('TodoListController', function($scope, toastrService, todoListService) {
+
+    });
+angular.module('myApp')
+    .controller('TodoListController', [
+        '$scope', 
+        '$window', 
+        'toastrService', 
+        'todoListService',
+        function($scope, toastrService, todoListService) {
+
+        }
+    ])
+```
+
+**[强制]** 在项目配置使用了 [ng-annotate](https://github.com/olov/ng-annotate) 或类似插件时，使用插件支持的方式声明依赖项。
+
+解释：使用插件支持的方式声明可以统一团队风格，在工作流中结合的插件不会影响代码的压缩和合并，且一般情况下不会出现错误。
+
+```javascript
+// good
+angular.module('myApp')
+    .controller('TodoListController', function($scope, toastrService, todoListService) {
+        'ngInject';
+    });
+```
+
+**[建议]** 声明依赖项时，按照内置、第三方、自定义、常量的顺序声明。
+
+```javascript
+// good
+angular.module('myApp')
+    .controller(function($scope, toastrService, todoListService) {
+
+    });
+```
+
+### 5.4 Controller
+
+**[建议]** `Controller` 使用 `PascalCase`，并以 `Controller` 结尾。
+
+```javascript
+// good
+angular.module('myApp')
+    .controller('TodoListController', function() {
+
+    });
+
+// bad
+angular.module('myApp')
+    .controller('TodoListCtrl', function() {
+
+    });
+```
+
+**[建议]** 可复用弹框的 Controller 单独注册。
+
+**[建议]** Controller 只编写与视图直接相关的逻辑。
+
+解释：Controller 大部分情况下与视图紧密耦合，一些非视图逻辑可能在当前或未来是需要复用的。如：http 请求等不应该混杂在 Controller 代码中。
+
+### 5.5 Directive/Component
+
+**[建议]** Directive 或 Component 使用的 Controller 单独注册。
+
+```javascript
+// good
+angular.module('myApp')
+    .controller('Ido85PagerController', function(ido85PagerConfig) {
+
+    })
+    .directive('ido85Pager', {
+        restrict: 'A',
+        controller: 'Ido85PagerController',
+        templateUrl: 'ido85/pager.html'
+    });
+
+// bad
+angular.module('myApp')
+    .directive('ido85Pager', {
+        restrict: 'A',
+        controller: function(ido85PagerConfig) {
+
+        },
+        templateUrl: 'ido85/pager.html'
+    });
+
+// bad
+function Ido85PagerController = function(ido85PagerConfig) {
+
+}
+angular.module('myApp')
+    .directive('ido85Pager', {
+        restrict: 'A',
+        controller: Ido85PagerController,
+        templateUrl: 'ido85/pager.html'
+    });
+```
+
+### 5.6 Provider/Service/Factory
+
+**[强制]** 允许通过配置改变行为的 Service，使用 `.provider` 方法注册。
+
+*通过定义 `$get` 方法使 Injector 获取真正的 Service。*
+
+解释：使用 `.provider` 注册的 Service，可以在 `.config` 函数中通过 `ServiceNameProvider` 获取到其本身，之后可以修改默认配置，调用配置方法。
+
+```javascript
+angular.module('myApp')
+    .provider('dataIsland', function() {
+        this.selector = '[data-island]';
+
+        this.$get = function($document) {
+
+        };
+    });
+```
