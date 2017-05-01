@@ -62,9 +62,9 @@
 
 　　[5.4 Controller](#54-Controller)
 
-　　[5.5 Directive/Component](#54-Directive%2FComponent)
+　　[5.5 Directive/Component](#55-Directive%2FComponent)
 
-　　[5.6 Provider/Service/Factory](#55-Provider%2FService%2FFactory)
+　　[5.6 Provider/Service/Factory](#56-Provider%2FService%2FFactory)
 
 ## 1 0
 
