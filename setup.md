@@ -75,7 +75,7 @@ git 提供了命令行操作的方式，对于复杂的操作，还是有一个�
 
 ## [Node.js](https://zh.wikipedia.org/wiki/Node.js)
 
-Node.js 的 release 规则是按月份 release，所以我们只需要用相对稳定且带有 LTS（长期维护）的版本即可，目前开发中使用到的是 Node.js 4.x
+Node.js 的 release 规则是按月份 release，所以我们只需要用相对稳定且带有 LTS（长期维护）的版本即可，目前开发中使用到的是 Node.js 6.x
 
 1. 已有 Node.js?
 
