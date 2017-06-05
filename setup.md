@@ -87,7 +87,7 @@ Node.js 的 release 规则是按月份 release，所以我们只需要用相对�
 
 1. 下载
 
-    可以在[这个地址](https://nodejs.org/dist/latest-v4.x/)下载 Node.js 4.x 版本，一般使用最后一个版本，写文档的时候最后的版本应该是 v4.6.2。对于 Windows 系统来说下载 .msi 文件安装即可。
+    可以在[这个地址](https://nodejs.org/dist/latest-v6.x/)下载 Node.js 6.x 版本，一般使用最后一个版本，写文档的时候最后的版本应该是 v6.10.3。对于 Windows 系统来说下载 .msi 文件安装即可。
 
 1. 安装
 
@@ -108,7 +108,7 @@ npm 是 Node.js 的包管理工具，安装 Node.js 时会被一并安装（没�
 
 ### 升级 npm
 
-但自带安装的 npm 版本过低(2.15)，需要进行升级。
+但自带安装的 npm 版本过低，需要进行升级。
 
 #### 在除 Windows 以外的系统上升级
 
@@ -132,10 +132,10 @@ npm 是 Node.js 的包管理工具，安装 Node.js 时会被一并安装（没�
     npm install --global --production npm-windows-upgrade
     ```
 
-1. 使用模块，将 npm 升级到 3.10.9
+1. 使用模块，将 npm 升级到 4.6.1
 
     ```
-    npm-windows-upgrade --npm-version 3.10.9
+    npm-windows-upgrade --npm-version 4.6.1
     ```
 
 1. 完成
