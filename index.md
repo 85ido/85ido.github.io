@@ -10,9 +10,15 @@
 
 - [前后端分离的项目结构](project-structure.md)
 
+- [IDEA 的使用和插件](ide/idea.md)
+
 ### 代码规范
 
 - [代码规范](style-guide/README.md)
+
+### 框架和库
+
+- [Express](tech/express.md)
 
 ### ES6
 
