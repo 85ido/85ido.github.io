@@ -46,9 +46,19 @@ ESLint 是一个开源的 js 代码检查工具，通过架构和插件机制实
 
 ### 使用 ESLint 
 
-1. 开启 ESLint 配置
+1. 在默认配置中开启 ESLint 配置
+
+    **File > Other Settings > Default Settings > Language & Frameworks > JavaScript > Code Quality Tools > ESLint**
+
+    *跳到步骤3，该步骤配置完成后，新导入的项目会自动继承该默认配置，无需重复步骤2。*
+
+1. 在项目配置中开启 ESLint 配置
 
     **File > Settings > Language & Frameworks > JavaScript > Code Quality Tools > ESLint**
+
+    *该步骤只对当前项目有效，更换项目时需要重新配置。*
+
+1. 配置
 
     ![ESLint 配置](images/eslint-settings.png)
 
