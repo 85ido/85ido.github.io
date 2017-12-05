@@ -82,7 +82,7 @@
 
 *A*：AngularJS 相关规范。
 
-*E*：该规范会在 .editorConfig 中体现。
+*E*：该规范会在 .editorconfig 中体现。
 
 *6*：该条目仅在 ES6 环境下有效，其他环境可以忽略。
 
@@ -95,6 +95,21 @@
 **[强制]** 每个文件中只存在一个可以向外公开的部分。
 
 **[强制]** 文件使用 camelCase 的方式命名。
+
+**[强制]** *A* 文件以文件中公开的部分调用方式命名。
+
+解释：在使用 AngularJS 后，文件名与包含的 AngularJS 概念的调用方式一致，**简单的说，即在文件中定义的部分在写代码时如何引入和使用，文件名称就是什么。**具体请参考下面示例。
+
+```javascript
+|-- js
+|---- ProjectListController.js // 包含 Controller 定义：ProjectListController
+|---- services
+|------ projectService.js // 包含 Service 定义：projectService
+|---- directives
+|------ channel-select.js // 包含 Directive 定义：channelSelect
+|---- filters
+|------ toNo.js // 包含 Filter 定义：toNo
+```
 
 **[强制]** 如果文件中存放的是类，文件与类名同名。
 
@@ -203,12 +218,19 @@ foo(10,15);
 
 **[强制]** `()` 和 `[]` 内紧贴括号的部分不允许有空格。
 
+**[强制]** *6* 解构时，`{}` 和 `[]` 内紧贴括号的部分有一个空格。
+
 ```javascript
 // good
 var arr = [1, 2, 3, 4, 5];
 
+const { selectedProject } = options;
+const [ , fileName ] = result;
+
 // bad
 var arr = [ 1, 2, 3, 4, 5 ];
+const {selectedProject} = options;
+const [filePath] = result;
 ```
 
 **[强制]** 行尾不允许有多余的空格。
@@ -411,7 +433,7 @@ var constants = {
 };
 ```
 
-**[强制]** 函数使用 `PascalCase`，函数的参数使用 `camelCase`。
+**[强制]** 函数使用 `camelCase`，函数的参数使用 `camelCase`。
 
 ```javascript
 // good
@@ -425,7 +447,7 @@ function DoSomething(Primary) {
 }
 ```
 
-**[强制]** 类使用 `PascalCase`。
+**[强制]** 类和构造函数使用 `PascalCase`。
 
 ```javascript
 // good
@@ -1078,7 +1100,7 @@ angular.module('myApp')
 ```javascript
 // good
 angular.module('myApp')
-    .controller(function($scope, toastrService, todoListService) {
+    .controller('DemoController', function($scope, toastrService, todoListService) {
 
     });
 ```
