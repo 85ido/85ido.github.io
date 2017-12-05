@@ -218,12 +218,19 @@ foo(10,15);
 
 **[强制]** `()` 和 `[]` 内紧贴括号的部分不允许有空格。
 
+**[强制]** *6* 解构时，`{}` 和 `[]` 内紧贴括号的部分有一个空格。
+
 ```javascript
 // good
 var arr = [1, 2, 3, 4, 5];
 
+const { selectedProject } = options;
+const [ , fileName ] = result;
+
 // bad
 var arr = [ 1, 2, 3, 4, 5 ];
+const {selectedProject} = options;
+const [filePath] = result;
 ```
 
 **[强制]** 行尾不允许有多余的空格。
