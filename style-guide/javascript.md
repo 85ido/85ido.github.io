@@ -1078,7 +1078,7 @@ angular.module('myApp')
 ```javascript
 // good
 angular.module('myApp')
-    .controller(function($scope, toastrService, todoListService) {
+    .controller('DemoController', function($scope, toastrService, todoListService) {
 
     });
 ```
