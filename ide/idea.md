@@ -40,6 +40,30 @@ Lombok 就是用来解决这种问题的，通过安装插件 + 在项目中依�
 
     ![lombok 生成了 setter](images/lombok-setter.jpg)
 
+## EditorConfig
+
+EditorConfig 是一部分常用的格式描述定义文件，目前大部分编辑器都已经原生或通过插件的方式支持读取 EditorConfig 规则。通过在项目中添加 `.editorconfig` 文件，将规则写在该文件中即可在其他代码文件中应用这些格式。
+
+[继续阅读](http://editorconfig.org/)
+
+[在 VSCode 中安装 EditorConfig 插件](https://85ido.github.io/setup.html#%E9%85%8D%E7%BD%AE)
+
+IDEA 中已经默认对 EditorConfig 进行支持，只是有一个小地方会影响使用体验：
+
+当 `trim_trailing_whitespace` 配置为 `true` 时，IDEA 默认的处理方式会导致部分行不会被修正，会保留空格，这样会触发 ESLint 的 `no-trailing-spaces` 规则。通过修改 IDEA 的配置，可以使 IDEA 默认 trim 所有的行尾的空格（以及只有空格，但保持缩进的行）。
+
+配置方式：
+
+**File > Settings > Editor > General > Other**
+
+将 *Strip trailing spaces on Save* 修改为 *All*，去掉 *Always keep trailing spaces on caret line* 的勾。
+
+最终配置：
+
+![最终配置](images/trailing-spaces.jpg)
+
+这样就可以实现与 VSCode 安装插件后一样的行为，即在保存时，无论是否为当前行，都会去掉行尾的空格（及保持缩进的空行的空格）。
+
 ## ESLint
 
 ESLint 是一个开源的 js 代码检查工具，通过架构和插件机制实现比 JsHint 更加灵活的配置和校验。ESLint 的配置文件 (.eslintrc.js) 已经成为项目的标配，这部分内容主要讲解如何在 IDEA 的编辑代码视图中直接查看 ESLint 结果，类似于查看 Java 代码中的 Warning 和 Error。
