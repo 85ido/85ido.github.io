@@ -8,7 +8,7 @@ IDEA 是最好用的 Java IDE，没有之一。通过配置和插件，IDEA 也�
 
 写 Java 代码时，占比最多的就是 Java POJO(Plain Old Java Object) 中的 getter 和 setter 方法，因为 Java 没有语法糖，所以在想获取或设置对象的属性时必须用过 getter 和 setter，这就造成了我们要重复去写这部分代码，虽然大多数 IDE 提供了快捷生成的功能，但是还是需要花时间去点击和调整。
 
-Lombok 就是用来解决这种问题的，通过安装插件 + 在项目中依赖的方式，通过在 POJO 类上添加 `@Data` 注解，可以在编辑时直接生成 getter 和 setter，节省代码量。Lombok 还提供了一些注解对 getter, setter, constructor 进行定制。
+Lombok 就是用来解决这种问题的，通过安装插件 + 在项目中依赖的方式，通过在 POJO 类上添加 `@Data` 注解，可以在编译时直接生成 getter 和 setter，节省代码量。Lombok 还提供了一些注解对 getter, setter, constructor 进行定制。
 
 [继续阅读](https://projectlombok.org/features/all)
 
