@@ -8,7 +8,7 @@ IDEA 是最好用的 Java IDE，没有之一。通过配置和插件，IDEA 也�
 
 写 Java 代码时，占比最多的就是 Java POJO(Plain Old Java Object) 中的 getter 和 setter 方法，因为 Java 没有语法糖，所以在想获取或设置对象的属性时必须用过 getter 和 setter，这就造成了我们要重复去写这部分代码，虽然大多数 IDE 提供了快捷生成的功能，但是还是需要花时间去点击和调整。
 
-Lombok 就是用来解决这种问题的，通过安装插件 + 在项目中依赖的方式，通过在 POJO 类上添加 `@Data` 注解，可以在编辑时直接生成 getter 和 setter，节省代码量。Lombok 还提供了一些注解对 getter, setter, constructor 进行定制。
+Lombok 就是用来解决这种问题的，通过安装插件 + 在项目中依赖的方式，通过在 POJO 类上添加 `@Data` 注解，可以在编译时直接生成 getter 和 setter，节省代码量。Lombok 还提供了一些注解对 getter, setter, constructor 进行定制。
 
 [继续阅读](https://projectlombok.org/features/all)
 
@@ -39,6 +39,30 @@ Lombok 就是用来解决这种问题的，通过安装插件 + 在项目中依�
 1. 编写代码，调用 setter
 
     ![lombok 生成了 setter](images/lombok-setter.jpg)
+
+## EditorConfig
+
+EditorConfig 是一部分常用的格式描述定义文件，目前大部分编辑器都已经原生或通过插件的方式支持读取 EditorConfig 规则。通过在项目中添加 `.editorconfig` 文件，将规则写在该文件中即可在其他代码文件中应用这些格式。
+
+[继续阅读](http://editorconfig.org/)
+
+[在 VSCode 中安装 EditorConfig 插件](https://85ido.github.io/setup.html#%E9%85%8D%E7%BD%AE)
+
+IDEA 中已经默认对 EditorConfig 进行支持，只是有一个小地方会影响使用体验：
+
+当 `trim_trailing_whitespace` 配置为 `true` 时，IDEA 默认的处理方式会导致部分行不会被修正，会保留空格，这样会触发 ESLint 的 `no-trailing-spaces` 规则。通过修改 IDEA 的配置，可以使 IDEA 默认 trim 所有的行尾的空格（以及只有空格，但保持缩进的行）。
+
+配置方式：
+
+**File > Settings > Editor > General > Other**
+
+将 *Strip trailing spaces on Save* 修改为 *All*，去掉 *Always keep trailing spaces on caret line* 的勾。
+
+最终配置：
+
+![最终配置](images/trailing-spaces.jpg)
+
+这样就可以实现与 VSCode 安装插件后一样的行为，即在保存时，无论是否为当前行，都会去掉行尾的空格（及保持缩进的空行的空格）。
 
 ## ESLint
 
@@ -71,5 +95,15 @@ ESLint 是一个开源的 js 代码检查工具，通过架构和插件机制实
     ```
 
 ## Gulp
+
+Gulp 是一个 task runner，主要用来将前端可以自动化的任务通过代码的方式进行配置和保存，使开发人员无需记忆每一个处理流程的命令和冗杂的配置。IDEA 中内置了对 Gulp 任务的支持，通过以下步骤打开 Gulp 窗口并在 IDEA 中执行 Gulp 任务。
+
+1. 右键项目中的 `gulpfile.babel.js`，选择 *Show Gulp Tasks*，即可打开 Gulp 窗口。
+
+    ![gulpfile](images/gulpfile.jpg)
+
+1. 在打开的 Gulp 窗口中双击任务，即可在 IDEA 中执行 Gulp 任务。
+
+    ![执行 Gulp 任务](images/run-gulp-task.jpg)
 
 *To Be Done*
