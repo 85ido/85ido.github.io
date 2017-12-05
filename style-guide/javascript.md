@@ -433,7 +433,7 @@ var constants = {
 };
 ```
 
-**[强制]** 函数使用 `PascalCase`，函数的参数使用 `camelCase`。
+**[强制]** 函数使用 `camelCase`，函数的参数使用 `camelCase`。
 
 ```javascript
 // good
@@ -447,7 +447,7 @@ function DoSomething(Primary) {
 }
 ```
 
-**[强制]** 类使用 `PascalCase`。
+**[强制]** 类和构造函数使用 `PascalCase`。
 
 ```javascript
 // good
