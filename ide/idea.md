@@ -96,4 +96,14 @@ ESLint 是一个开源的 js 代码检查工具，通过架构和插件机制实
 
 ## Gulp
 
+Gulp 是一个 task runner，主要用来将前端可以自动化的任务通过代码的方式进行配置和保存，使开发人员无需记忆每一个处理流程的命令和冗杂的配置。IDEA 中内置了对 Gulp 任务的支持，通过以下步骤打开 Gulp 窗口并在 IDEA 中执行 Gulp 任务。
+
+1. 右键项目中的 `gulpfile.babel.js`，选择 *Show Gulp Tasks*，即可打开 Gulp 窗口。
+
+    ![gulpfile](images/gulpfile.jpg)
+
+1. 在打开的 Gulp 窗口中双击任务，即可在 IDEA 中执行 Gulp 任务。
+
+    ![执行 Gulp 任务](images/run-gulp-task.jpg)
+
 *To Be Done*
