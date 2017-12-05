@@ -96,6 +96,21 @@
 
 **[强制]** 文件使用 camelCase 的方式命名。
 
+**[强制]** *A* 文件以文件中公开的部分调用方式命名。
+
+解释：在使用 AngularJS 后，文件名与包含的 AngularJS 概念的调用方式一致，**简单的说，即在文件中定义的部分在写代码时如何引入和使用，文件名称就是什么。**具体请参考下面示例。
+
+```javascript
+|-- js
+|---- ProjectListController.js // 包含 Controller 定义：ProjectListController
+|---- services
+|------ projectService.js // 包含 Service 定义：projectService
+|---- directives
+|------ channel-select.js // 包含 Directive 定义：channelSelect
+|---- filters
+|------ toNo.js // 包含 Filter 定义：toNo
+```
+
 **[强制]** 如果文件中存放的是类，文件与类名同名。
 
 *①：对外公开的部分包括 Controller, Service, Directive, Component 等*
