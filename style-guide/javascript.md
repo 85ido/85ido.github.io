@@ -82,7 +82,7 @@
 
 *A*：AngularJS 相关规范。
 
-*E*：该规范会在 .editorConfig 中体现。
+*E*：该规范会在 .editorconfig 中体现。
 
 *6*：该条目仅在 ES6 环境下有效，其他环境可以忽略。
 
