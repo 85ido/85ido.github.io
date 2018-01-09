@@ -29,7 +29,7 @@ else {
 
 参考：[Chromium Flash Roadmap](https://www.chromium.org/flash-roadmap#TOC-Developer-Recommendations)
 
-扩展阅读：[Permissions.query() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query)
+扩展阅读：[Permissions.query() - Web APIs MDN](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query)
 
 所以我们可以通过浏览器的这个特性，配合上述的检查来优化启用 Flash 的用户体验。
 
