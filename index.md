@@ -20,6 +20,10 @@
 
 - [Express](tech/express.md)
 
+### 技能树叶
+
+- [检查 Flash 和请求使用 Flash](features/flash-detect.md)
+
 ### ES6
 
 - [解构](es6-features/解构.md)
@@ -41,6 +45,18 @@
 - [环境安装文档(Windows)](setup.md)
 
 - [环境安装文档(Ubuntu)](setup-ubuntu.md)
+
+### 资源
+
+- [前端基础库](https://github.com/85ido/85ido-practice)
+
+- [85ido 前端脚手架](https://coding.net/u/wheeljs/p/85ido-fe-generator/git)
+
+    [内部仓库地址](http://192.168.10.211:8600/root/85ido-fe-generator)
+
+- [85ido Angular 组件库](https://coding.net/u/ido85/p/angular-85ido/git)
+
+- [基于 Backbone 的可重用组件库](https://coding.net/u/85ido/p/ued-shared/git/tree/dev/node)
 
 ## 贡献
 
